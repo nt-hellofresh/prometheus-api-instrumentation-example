@@ -3,6 +3,7 @@ package pkg
 import (
 	"log"
 	"net/http"
+
 	"observability/pkg/app"
 
 	"observability/pkg/core"
