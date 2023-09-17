@@ -3,6 +3,7 @@ package pkg
 import (
 	"log"
 	"net/http"
+	"observability/pkg/app"
 
 	"observability/pkg/core"
 
@@ -11,9 +12,9 @@ import (
 
 func RegisterRoutes() {
 	log.Printf("Registering routes...")
-	http.HandleFunc("/", makeHandler(homeRoute))
-	http.HandleFunc("/heads-or-tails", makeHandler(headsOrTailsRoute))
-	http.HandleFunc("/bad-route", makeHandler(routeWithError))
+	http.HandleFunc("/", makeHandler(app.HomeRoute))
+	http.HandleFunc("/heads-or-tails", makeHandler(app.HeadsOrTailsRoute))
+	http.HandleFunc("/bad-route", makeHandler(app.RouteWithError))
 	http.Handle("/metrics", promhttp.Handler())
 }
 

@@ -1,4 +1,4 @@
-package pkg
+package app
 
 import (
 	"errors"
@@ -9,20 +9,20 @@ import (
 	"observability/pkg/metrics"
 )
 
-func homeRoute(ctx *core.ApiContext) error {
+func HomeRoute(ctx *core.ApiContext) error {
 	resp := testResponse{
 		Message: "Hello, World!",
 	}
 	return ctx.JSON(resp, http.StatusOK)
 }
 
-func headsOrTailsRoute(ctx *core.ApiContext) error {
+func HeadsOrTailsRoute(ctx *core.ApiContext) error {
 	outcome := flipCoin()
 	metrics.IncrementHeadsOrTailsMetrics(outcome)
 	return ctx.JSON(map[string]string{"outcome": outcome}, http.StatusOK)
 }
 
-func routeWithError(_ *core.ApiContext) error {
+func RouteWithError(_ *core.ApiContext) error {
 	return errors.New("something went wrong")
 }
 
