@@ -7,7 +7,7 @@ import (
 	"observability/pkg/metrics"
 )
 
-func responseMetricsMiddleware(next core.Handler) core.Handler {
+func responseMetricsMiddleware(next core.HandlerFunc) core.HandlerFunc {
 	return func(ctx *core.ApiContext) error {
 		err := next(ctx)
 		metrics.RecordResponse(ctx)
@@ -15,7 +15,7 @@ func responseMetricsMiddleware(next core.Handler) core.Handler {
 	}
 }
 
-func unhandledErrorMiddleware(next core.Handler) core.Handler {
+func unhandledErrorMiddleware(next core.HandlerFunc) core.HandlerFunc {
 	return func(ctx *core.ApiContext) error {
 		err := next(ctx)
 		if err != nil {

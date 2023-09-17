@@ -22,7 +22,7 @@ func Start(port string) {
 	log.Fatal(http.ListenAndServe(port, nil))
 }
 
-func makeHandler(fn core.Handler) http.HandlerFunc {
+func makeHandler(fn core.HandlerFunc) http.HandlerFunc {
 	handler := fn
 	handler = unhandledErrorMiddleware(handler)
 	handler = responseMetricsMiddleware(handler)

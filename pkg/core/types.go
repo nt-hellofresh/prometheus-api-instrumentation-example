@@ -1,3 +1,3 @@
 package core
 
-type Handler func(ctx *ApiContext) error
+type HandlerFunc func(ctx *ApiContext) error
